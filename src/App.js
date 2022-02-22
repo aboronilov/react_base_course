@@ -28,11 +28,13 @@ function App() {
   }
 
   function addTodo(title) {
-    setTodos(todos.concat([{
-      title,
-      id: Date.now(),
-      completed: false
-    }]))
+    setTodos(
+      todos.concat([{
+        title,
+        id: Date.now(),
+        isCompleted: false
+      }])
+    )
   }
 
   return (
@@ -40,11 +42,7 @@ function App() {
       <div className="wrapper">
         <h1>React</h1>
         <AddTodo onCreate={addTodo}/>
-        {todos.length ? (
-            <TodoList todos={todos} onToggle={toggleTodo} />
-          ) : (
-            <p>Дела выполнен</p>)
-        }        
+        {todos.length ? <TodoList todos={todos} onToggle={toggleTodo}/> : <p>Все сделано</p>}        
       </div>
     </Context.Provider>
   );
@@ -52,4 +50,4 @@ function App() {
 
 export default App;
 
-// 26:31
+

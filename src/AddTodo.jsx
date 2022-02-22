@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import PropTypes from 'prop-types'
 
-export default function AddTodo({onCreate}) {
+function AddTodo({onCreate}) {
   const [value, setValue] = useState('')
 
   function submitHandler(event) {
     event.preventDefault()
-    
+
     if (value.trim()) {
         onCreate(value)
         setValue('')
@@ -14,13 +14,15 @@ export default function AddTodo({onCreate}) {
   }
 
   return (
-    <form style={{ marginBottom: "1rem" }} onSubmit={submitHandler}>
+    <form style={{ marginBottom: '1rem' }} onSubmit={submitHandler}>
       <input value={value} onChange={event => setValue(event.target.value)}></input>
-      <button type="submit">Добавить дело</button>
+      <button type="submit">Добавить задачу</button>
     </form>
   );
 }
 
-AddTodo.propTypes={
+AddTodo.propTypes = {
     onCreate: PropTypes.func.isRequired
 }
+
+export default AddTodo

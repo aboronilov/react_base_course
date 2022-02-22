@@ -1,25 +1,28 @@
+import { useState } from "react";
 import TodoList from "./Todo/TodoList";
 
 function App() {
-  const todos = [
-    {id: 1, isCompleted: false, title: 'Купить хлеб'},
-    {id: 2, isCompleted: false, title: 'Купить масло'},
-    {id: 3, isCompleted: false, title: 'Купить молоко'},
-  ]
+  const [todos, setTodos] = useState([
+    { id: 1, isCompleted: false, title: "Купить хлеб" },
+    { id: 2, isCompleted: false, title: "Купить масло" },
+    { id: 3, isCompleted: false, title: "Купить молоко" },
+  ]);
 
   function toggleTodo(id) {
-    todos.map(todo => {
-      if (todo.id === id) {
-        todo.isCompleted = !todo.isCompleted
-      }
-      return todo
-    })
+    setTodos(
+      todos.map(todo => {
+        if (todo.id === id ) {
+          todo.isCompleted = !todo.isCompleted
+        }
+        return todo
+      })
+    )
   }
 
   return (
     <div className="wrapper">
       <h1>React</h1>
-      <TodoList todos={todos} onToggle={toggleTodo}/>
+      <TodoList todos={todos} onToggle={toggleTodo} />
     </div>
   );
 }
